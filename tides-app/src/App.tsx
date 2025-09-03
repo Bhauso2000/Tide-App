@@ -25,14 +25,14 @@ export default function App() {
     }
   }, []);
 
-  const { data, isLoading, error, refetch } = useTideData(coords?.lat ?? null, coords?.lng ?? null);
+  const { data,isFetching, error, refetch } = useTideData(coords?.lat ?? null, coords?.lng ?? null);
 
   return (
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-2">🌊 Tides Information</h1>
       <p className="text-gray-600 mb-6">See nearest coast, tides, and safe time window.</p>
 
-      {isLoading && <Loader />}
+      {(isFetching) && <Loader />}
 
       {error && (
         <div className="bg-red-100 border border-red-300 p-4 rounded transition-all duration-300">
